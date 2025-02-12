@@ -1,0 +1,65 @@
+/* Default styles */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light Theme */
+.light {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Dark Theme */
+.dark {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.card.bg-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.card.bg-light {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Navbar Button Styles */
+.btn-outline-dark {
+  color: #333;
+  border-color: #333;
+}
+
+.btn-outline-light {
+  color: #f1f1f1;
+  border-color: #f1f1f1;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Ensure that the NewsItem cards have the same height */
+.news-item {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.news-item-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;  /* Ensures the card stretches to fit the container */
+}
+
+.card-body {
+  flex-grow: 1;  /* Allow the card body to take up the remaining space */
+}
+
+/* Optional: If you want the images to always have a fixed height */
+.card-img-top {
+  height: 200px; /* Adjust to your desired height */
+  object-fit: cover; /* Ensures images are cropped to fit the height */
+}

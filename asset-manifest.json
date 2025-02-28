@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/GlobeInsight/static/css/main.45eef359.css",
+    "main.js": "/GlobeInsight/static/js/main.59a4444f.js",
+    "static/js/488.869620ad.chunk.js": "/GlobeInsight/static/js/488.869620ad.chunk.js",
+    "index.html": "/GlobeInsight/index.html",
+    "main.45eef359.css.map": "/GlobeInsight/static/css/main.45eef359.css.map",
+    "main.59a4444f.js.map": "/GlobeInsight/static/js/main.59a4444f.js.map",
+    "488.869620ad.chunk.js.map": "/GlobeInsight/static/js/488.869620ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.45eef359.css",
+    "static/js/main.59a4444f.js"
+  ]
+}

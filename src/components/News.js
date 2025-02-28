@@ -15,7 +15,7 @@ export class News extends Component {
   }
 
   async fetchNews(page, category) {
-    let url = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=eafab1af717446bfab68fb25a93b60b5&page=${page}&pageSize=20`;
+    let url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?category=${category}&apiKey=eafab1af717446bfab68fb25a93b60b5&page=${page}&pageSize=20`;
 
     this.setState({ loading: true });
 
@@ -65,13 +65,20 @@ export class News extends Component {
     const { theme } = this.props;
 
     return (
-      <div className={`container ${theme === 'dark' ? 'text-white' : 'text-dark'}`}>
-        {/* Category Buttons */}
-        <div className="d-flex justify-content-center my-3">
-          {["general", "business", "entertainment", "health", "science", "sports", "technology"].map((category) => (
+      <div className={`container ${theme === 'dark' ? 'text-white' : 'text-dark'}`}>        
+        <div className="d-flex flex-wrap justify-content-center my-3 gap-2">
+          {[
+            "general",
+            "business",
+            "entertainment",
+            "health",
+            "science",
+            "sports",
+            "technology",
+          ].map((category) => (
             <button
               key={category}
-              className={`btn mx-2 ${this.state.category === category ? (theme === 'dark' ? 'btn-light' : 'btn-dark') : 'btn-outline-primary'}`}
+              className={`btn ${this.state.category === category ? (theme === 'dark' ? 'btn-light' : 'btn-dark') : 'btn-outline-primary'}`}
               onClick={() => this.handleCategoryChange(category)}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -79,17 +86,16 @@ export class News extends Component {
           ))}
         </div>
 
-        {/* News Grid */}
         <div className="row my-4">
           {this.state.loading ? (
             <Spinner />
           ) : (
-            <>
-              {this.state.articles.length === 0 ? (
-                <p>No articles found</p>
-              ) : (
-                this.state.articles.map((element) => (
-                  <div className="col-md-4 mb-4 news-item" key={element.url}>
+            this.state.articles.length === 0 ? (
+              <p>No articles found</p>
+            ) : (
+              this.state.articles.map((element) => (
+                <div className="col-12 col-sm-6 col-md-4 mb-4 d-flex align-items-stretch" key={element.url}>
+                  <div className="w-100">
                     <NewsItem
                       title={element.title || ""}
                       description={element.description || ""}
@@ -98,13 +104,12 @@ export class News extends Component {
                       theme={theme}
                     />
                   </div>
-                ))
-              )}
-            </>
+                </div>
+              ))
+            )
           )}
         </div>
 
-        {/* Pagination */}
         <div className="d-flex justify-content-between my-3">
           <button
             className={`btn ${theme === 'dark' ? 'btn-light' : 'btn-dark'}`}

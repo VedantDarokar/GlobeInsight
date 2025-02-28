@@ -15,7 +15,7 @@ export class News extends Component {
   }
 
   async fetchNews(page, category) {
-    let url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?category=${category}&apiKey=eafab1af717446bfab68fb25a93b60b5&page=${page}&pageSize=20`;
+    let url = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=eafab1af717446bfab68fb25a93b60b5&page=${page}&pageSize=20`;
 
     this.setState({ loading: true });
 

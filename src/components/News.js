@@ -16,13 +16,13 @@ export class News extends Component {
 
   async fetchNews(page, category) {
     const apiKey = "eafab1af717446bfab68fb25a93b60b5";
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const apiUrl = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${apiKey}&page=${page}&pageSize=20`;
+    const baseUrl = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${apiKey}&page=${page}&pageSize=20`;
+    const proxyUrl = "https://api.allorigins.win/raw?url=";
   
     this.setState({ loading: true });
   
     try {
-      const response = await fetch(proxyUrl + apiUrl);
+      const response = await fetch(proxyUrl + encodeURIComponent(baseUrl));
       if (!response.ok) {
         throw new Error("Failed to fetch news");
       }
@@ -38,6 +38,7 @@ export class News extends Component {
       this.setState({ loading: false });
     }
   }
+  
   
 
   componentDidMount() {

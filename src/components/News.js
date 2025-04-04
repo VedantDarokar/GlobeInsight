@@ -15,27 +15,30 @@ export class News extends Component {
   }
 
   async fetchNews(page, category) {
-    let url = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=eafab1af717446bfab68fb25a93b60b5&page=${page}&pageSize=20`;
-
+    const apiKey = "eafab1af717446bfab68fb25a93b60b5";
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const apiUrl = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${apiKey}&page=${page}&pageSize=20`;
+  
     this.setState({ loading: true });
-
+  
     try {
-      let data = await fetch(url);
-      if (!data.ok) {
+      const response = await fetch(proxyUrl + apiUrl);
+      if (!response.ok) {
         throw new Error("Failed to fetch news");
       }
-
-      let parsedData = await data.json();
+  
+      const parsedData = await response.json();
       this.setState({
         articles: parsedData.articles || [],
         totalResults: parsedData.totalResults || 0,
         loading: false,
       });
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching news:", error);
       this.setState({ loading: false });
     }
   }
+  
 
   componentDidMount() {
     this.fetchNews(this.state.page, this.state.category);
